@@ -1,0 +1,162 @@
+{%extends "index.html"%}
+
+{% block content_text %}
+	<div class="container-fluid pb-3" style="max-width: 98vw">
+		<table class="table table-bordered table-hover" style="table-layout:fixed;word-wrap:break-word;">
+			<tbody>
+				<tr class="table-success text-center text-secondary">
+					{% if item['wikipedia_page']=="True" %}
+						<th>wikipedia page</th>
+					{% endif %}
+					
+					{% if item['wikidata_page']=="True" %}
+						<th>wikidata page</th>
+					{% endif %}
+					
+					{% if item['label']=="True" %}
+						<th>label</th>
+					{% endif %}
+					
+					{% if item['descriptions']=="True" %}
+						<th>descriptions</th>
+					{% endif %}
+					
+					{% if item['instance']=="True" %}
+						<th>instance</th>
+					{% endif %}
+					
+					{% if item['image']=="True" %}
+						<th>image</th>
+					{% endif %}
+					
+					{% if item['country']=="True" %}
+						<th>country</th>
+					{% endif %}
+					
+					{% if item['location']=="True" %}
+						<th>located</th>
+					{% endif %}
+					
+					{% if item['commons']=="True" %}
+						<th>commons</th>
+					{% endif %}
+					
+					{% if item['coordinates']=="True" %}
+						<th>coordinates</th>
+					{% endif %}
+					
+					{% if item['commons_page']=="True" %}
+						<th>commons page</th>
+					{% endif %}
+					
+					{% if item['wiki_pages']=="True" %}
+						<th>wiki page</th>
+					{% endif %}
+				</tr>
+				
+				{%for i in range(length)%}
+					<tr>
+						{% if item['wikipedia_page']=="True" %}
+							<td class="align-middle text-center">
+								<a href="{{item[title_list[i]]['title_url']}}">{{item[title_list[i]]['title']}}</a>
+							</td>
+						{% endif %}
+						
+						{% if item['wikidata_page']=="True" %}
+							<td class="align-middle text-center">
+								<a href="{{item[title_list[i]]['wikidata_url']}}">{{item[title_list[i]]['wikidata_id']}}</a>
+							</td>
+						{% endif %}
+						
+						{% if item['label']=="True" %}
+							<td class="align-middle text-center">{{item[title_list[i]]['label']}}</td>
+						{% endif %}
+						
+						{% if item['descriptions']=="True" %}
+							<td class="align-middle text-center">{{item[title_list[i]]['descriptions']}}</td>
+						{% endif %}
+						
+						{% if item['instance']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['instance']|length)%}
+									{{item[title_list[i]]['instance'][j]}}</br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['image']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['image']|length)%}
+										<img class="mx-auto img-fluid" src="http://commons.wikimedia.org/wiki/Special:FilePath/{{item[title_list[i]]['image'][j]}}" /></br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['country']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['country']|length)%}
+										{{item[title_list[i]]['country'][j]}}</br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['location']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['located']|length)%}
+										{{item[title_list[i]]['located'][j]}}</br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['commons']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['commons']|length)%}
+										{{item[title_list[i]]['commons'][j]}}</br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['coordinates']=="True" %}
+							<td class="align-middle text-center">
+								{%for j in range(item[title_list[i]]['latitude']|length)%}
+										{{item[title_list[i]]['latitude'][j]}}</br>
+										{{item[title_list[i]]['longitude'][j]}}</br>
+								{%endfor%}
+							</td>
+						{% endif %}
+						
+						{% if item['commons_page']=="True" %}
+							<td class="align-middle text-center">{{item[title_list[i]]['commonswiki']}}</td>
+						{% endif %}
+						
+						{% if item['wiki_pages']=="True" %}
+							<td class="align-middle text-center">{{item[title_list[i]]['wiki']}}</td>
+						{% endif %}
+					</tr>
+				{%endfor%}
+	
+			</tbody>
+		</table>
+
+	</div> 
+
+<script>
+//<pre class="pre-scrollable" style="max-height: 650px; white-space: pre-wrap;">{{item}}</pre>
+	document.getElementById("input").value = "{{item['text_url']}}";
+	
+	document.getElementById("select").value = "{{item['language']}}";
+	
+	document.getElementById("defaultChecked1").checked = {{item['wikipedia_page']|lower}};
+	document.getElementById("defaultChecked2").checked = {{item['wikidata_page']|lower}};
+	document.getElementById("defaultUnchecked1").checked = {{item['commons']|lower}};
+	document.getElementById("defaultUnchecked2").checked = {{item['label']|lower}};
+	document.getElementById("defaultUnchecked3").checked = {{item['descriptions']|lower}};
+	document.getElementById("defaultUnchecked4").checked = {{item['coordinates']|lower}};
+	document.getElementById("defaultUnchecked5").checked = {{item['instance']|lower}};
+	document.getElementById("defaultUnchecked6").checked = {{item['image']|lower}};
+	document.getElementById("defaultUnchecked7").checked = {{item['wiki_pages']|lower}};
+	document.getElementById("defaultUnchecked8").checked = {{item['country']|lower}};
+	document.getElementById("defaultUnchecked9").checked = {{item['location']|lower}};
+	document.getElementById("defaultUnchecked10").checked = {{item['commons_page']|lower}};
+</script>
+{% endblock %}

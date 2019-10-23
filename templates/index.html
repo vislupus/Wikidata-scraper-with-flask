@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Wikipedia scraper</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+    </style>
+</head>
+   <body>
+	<div class="jumbotron jumbotron-fluid p-2">
+        <h2 class="font-weight-bold text-center display-4">Scraper for Wikipedia category</h2><br>
+        <p class="font-weight-normal text-center">
+            This is a scraper for wikipedia categories. You can try: <mark><b class="text-secondary"><a href="https://en.wikipedia.org/wiki/Category:Show_caves_in_Bulgaria" target="_blank">Category:Show caves in Bulgaria</a></b></mark>.
+        </p>
+		
+		<div class="col-sm-12 col-lg-8 mr-auto ml-auto pt-4">
+			<form action="{{url_for('wiki_table')}}" method="POST" enctype="multipart/form-data">
+				<div class="input-group mb-3">
+				  <input type="text" name = "input" class="form-control" placeholder="Wikipedia url" aria-label="Wikipedia url" aria-describedby="basic-addon2" id="input">
+				</div>
+				
+				<div class="form-group">
+					<select name="language" class="custom-select" id="select">
+						<option selected>Choose language</option>
+						<option value="en">English</option>
+						<option value="bg">Bulgarian</option>
+					</select>
+				</div>
+				<div class="row pb-3">
+					<div class="col-3">
+						<div class="custom-control custom-checkbox">
+						  <input type="checkbox" name="wikipedia_page" value="true" class="custom-control-input" id="defaultChecked1" checked>
+						  <label class="custom-control-label" for="defaultChecked1">wikipedia page</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+						  <input type="checkbox" name="wikidata_page" value="true" class="custom-control-input" id="defaultChecked2" checked>
+						  <label class="custom-control-label" for="defaultChecked2">wikidata page</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="commons" value="true" class="custom-control-input" id="defaultUnchecked1">
+							<label class="custom-control-label" for="defaultUnchecked1">commons</label>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="label" value="true" class="custom-control-input" id="defaultUnchecked2">
+							<label class="custom-control-label" for="defaultUnchecked2">label</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="descriptions" value="true" class="custom-control-input" id="defaultUnchecked3">
+							<label class="custom-control-label" for="defaultUnchecked3">descriptions</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="coordinates" value="true" class="custom-control-input" id="defaultUnchecked4">
+							<label class="custom-control-label" for="defaultUnchecked4">coordinates</label>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="instance" value="true" class="custom-control-input" id="defaultUnchecked5">
+							<label class="custom-control-label" for="defaultUnchecked5">instance</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="image" value="true" class="custom-control-input" id="defaultUnchecked6">
+							<label class="custom-control-label" for="defaultUnchecked6">image</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="wiki_pages" value="true" class="custom-control-input" id="defaultUnchecked7">
+							<label class="custom-control-label" for="defaultUnchecked7">wiki pages</label>
+						</div>
+					</div>
+					<div class="col-3">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="country" value="true" class="custom-control-input" id="defaultUnchecked8">
+							<label class="custom-control-label" for="defaultUnchecked8">country</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="location" value="true" class="custom-control-input" id="defaultUnchecked9">
+							<label class="custom-control-label" for="defaultUnchecked9">location</label>
+						</div>
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="commons_page" value="true" class="custom-control-input" id="defaultUnchecked10">
+							<label class="custom-control-label" for="defaultUnchecked10">commons page</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<button type="submit" value="submit" class="btn btn-block btn-dark">Send</button>
+				</div>
+			</form>
+		</div>
+    </div>
+	  
+	{% block content_text %}{% endblock %}
+	
+   </body>
+</html>
