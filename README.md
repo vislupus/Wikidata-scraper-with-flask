@@ -1,2 +1,2 @@
 # Wikidata scraper with flask
-Web scraper for data from Wikipedia category pages to table with data from wikidata on every single page.
+Flask application for web scraping data from every element of Wikipedia category pages. It return table with data wich is get from Wikidata page.
