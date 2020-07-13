@@ -6,7 +6,7 @@
 
 ## Overview
 
-A simple single-screen application built with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and [Vanilla JavaScript](http://vanilla-js.com/) for scraping data from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) pages and visualize it in a table. The purpose of the application is to scrape the data from every element of a Wikipedia category page and go to the related Wikidata page and get some specific data from there, which will be displayed on a table.
+A simple single-screen application built with [Flask](https://flask.palletsprojects.com/en/1.1.x/) and [Vanilla JavaScript](http://vanilla-js.com/) for scraping data from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) pages and visualize it in a table. The idea behind this project was to find a way to scrape the data from every element of a Wikipedia category page and go to the related Wikidata page and get some specific data from there, which will be displayed on a table.
 
 ## Features
 
